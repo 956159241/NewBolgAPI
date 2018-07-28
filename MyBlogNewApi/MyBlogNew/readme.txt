@@ -1,0 +1,1 @@
+1.更新数据库：Update-Database -Force
