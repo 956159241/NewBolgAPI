@@ -161,6 +161,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Common\LoggerHelper.cs" />
     <Compile Include="Common\MyBlogNewEntities.cs" />
     <Compile Include="Common\Result.cs" />
@@ -175,9 +177,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807221431200_addtest.cs" />
-    <Compile Include="Migrations\201807221431200_addtest.Designer.cs">
-      <DependentUpon>201807221431200_addtest.cs</DependentUpon>
+    <Compile Include="Migrations\201808180542313_initial.cs" />
+    <Compile Include="Migrations\201808180542313_initial.Designer.cs">
+      <DependentUpon>201808180542313_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
@@ -197,6 +199,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Bll\" />
     <Folder Include="Dal\" />
     <Folder Include="Images\" />
@@ -205,12 +209,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\啊啊啊.pubxml" />
+    <EmbeddedResource Include="Migrations\201808180542313_initial.resx">
+      <DependentUpon>201808180542313_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807221431200_addtest.resx">
-      <DependentUpon>201807221431200_addtest.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\myblog.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

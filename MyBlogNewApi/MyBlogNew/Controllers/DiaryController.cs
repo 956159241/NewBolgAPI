@@ -21,14 +21,17 @@ namespace MyBlogNew.Controllers
         {
             try
             {
+                LoggerHelper.Info("Test before connection:");
                 using (var entity = new MyBlogNewEntities()) 
                 {
+                    LoggerHelper.Info("Test Log");
                     List<diary> ls_diary = entity.Diaries.OrderBy(x => x.Id).Skip(pageIndex * pageSize).Take(pageSize).ToList();
                     return ls_diary;
                 }
             }
             catch (Exception ex)
             {
+                LoggerHelper.Info("exception:", ex);
                 throw (ex);
             }
         }
