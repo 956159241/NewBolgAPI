@@ -2,21 +2,39 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace MyBlogNew.Common
 {
+    public enum LogLevel
+    {
+        Trace,
+        Debug,
+        Info,
+        Error,
+        Fatal
+    }
     public class LoggerHelper
     {
-        public enum LogLevel
-        {
-            Trace,
-            Debug,
-            Info,
-            Error,
-            Fatal
-        }
         private static Logger logger = LogManager.GetCurrentClassLogger();
+
+        public static void WriteLog(string message, LogLevel logLevel)
+        {
+            if (string.IsNullOrEmpty(message))
+                return;
+            var type = logger.GetType();
+           type.InvokeMember(logLevel.ToString(), BindingFlags.Default | BindingFlags.InvokeMethod, null, logger, new object[] { message });  
+        }
+
+        public static void WriteLog(string message, Exception ex, LogLevel logLevel)
+        {
+            if (string.IsNullOrEmpty(message))
+                return;
+            var type = logger.GetType();
+            type.InvokeMember(logLevel.ToString(), BindingFlags.Default | BindingFlags.InvokeMethod, null, logger, new object[] { message,ex });
+        }
+
 
         public static void Info(string message)
         {

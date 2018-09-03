@@ -21,10 +21,11 @@ namespace MyBlogNew.Controllers
         {
             try
             {
-                LoggerHelper.Info("Test before connection:");
+                LoggerHelper.WriteLog("hello writeLog,info", LogLevel.Info);
+                LoggerHelper.WriteLog("hello writeLog,Debug", LogLevel.Debug);
+                LoggerHelper.WriteLog("hello writeLog,Error", LogLevel.Error);
                 using (var entity = new MyBlogNewEntities()) 
                 {
-                    LoggerHelper.Info("Test Log");
                     List<diary> ls_diary = entity.Diaries.OrderBy(x => x.Id).Skip(pageIndex * pageSize).Take(pageSize).ToList();
                     return ls_diary;
                 }
@@ -35,7 +36,10 @@ namespace MyBlogNew.Controllers
                 throw (ex);
             }
         }
-
+        /// <summary>
+        /// get the count of diaries
+        /// </summary>
+        /// <returns></returns>
         public int GetDiariesTotalNum()
         {
             try
@@ -50,28 +54,6 @@ namespace MyBlogNew.Controllers
             {
                 throw (ex);
             }        
-        }
-
-        public int GetDiariesTotalNumOne()
-        {
-            try
-            {
-                using (var entity = new MyBlogNewEntities())
-                {
-                    int totalPage = entity.Diaries.ToList().Count();
-
-                    LoggerHelper.Info("hello");
-                    Dictionary<int, string> map = new Dictionary<int, string>();
-                    map.Add(1,"hello");
-                    map.Add(1,"world");
-                    return totalPage;
-                }
-            }
-            catch (Exception ex)
-            {
-                LoggerHelper.Info("hello",ex);
-                return 0;
-            }
         }
     }
 }

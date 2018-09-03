@@ -1,8 +1,0 @@
-2018-07-24 23:02:35.7240 | Info | hello 
-2018-07-24 23:02:35.9280 | Info | hello System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
-   在 MyBlogNew.Controllers.DiaryController.GetDiariesTotalNumOne() 位置 f:\MyBlogNew\MyBlogNewApi\MyBlogNew\Controllers\DiaryController.cs:行号 63 
- <no type>.lambda_method => DiaryController.GetDiariesTotalNumOne => LoggerHelper.Info 
-
